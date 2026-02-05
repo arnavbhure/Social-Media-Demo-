@@ -1,23 +1,23 @@
-.postContainerFlex{
-    margin-top: 2rem;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+.postContainerFlex {
+  margin-top: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.post{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2.5rem;
-    width: 20rem;
-    height: 18rem;
-    margin: 1rem;
-    border-radius: 2rem;
-    box-shadow: 5px 5px 8px 5px #d4d5d4;
-    border: none;
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  width: 20rem;
+  height: 15rem;
+  margin: 2rem;
+  border-radius: 2rem;
+  box-shadow: 5px 5px 8px 5px #d4d5d4;
+  border: none;
 }

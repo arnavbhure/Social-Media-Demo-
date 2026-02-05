@@ -1,0 +1,15 @@
+.FormFlex {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.FormClass {
+  height: 50vh;
+  width: 90vh;
+  padding: 2%;
+  margin-bottom: 12rem;
+  border: 1px solid black;
+  border-radius: 2rem;
+}
