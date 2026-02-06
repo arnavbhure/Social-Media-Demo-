@@ -6,10 +6,14 @@
 }
 
 .FormClass {
-  height: 50vh;
+  height: 55vh;
   width: 90vh;
   padding: 2%;
   margin-bottom: 12rem;
   border: 1px solid black;
   border-radius: 2rem;
+}
+.CreatePostStyle {
+  font-size: 1.5rem;
+  font-weight: 500;
 }

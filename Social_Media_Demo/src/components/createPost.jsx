@@ -6,7 +6,10 @@ const CreatePost = () => {
       <div className={style.FormFlex}>
         <form className={style.FormClass}>
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
+            <label
+              htmlFor="exampleInputEmail1"
+              className={`form-label ${style.CreatePostStyle}`}
+            >
               Post Heading
             </label>
             <input
@@ -17,7 +20,10 @@ const CreatePost = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
+            <label
+              htmlFor="exampleInputPassword1"
+              className={`form-label ${style.CreatePostStyle}`}
+            >
               Post Content
             </label>
             <textarea
