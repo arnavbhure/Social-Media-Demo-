@@ -1,10 +1,47 @@
+import { useContext, useRef } from "react";
 import style from "../components/createPost.module.css";
+import { PostList } from "../store/post-store";
 
 const CreatePost = () => {
+  const PostTitleElement = useRef();
+  const PostBodyElement = useRef();
+  const User_ID = useRef();
+  const { addPost } = useContext(PostList);
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    const userID = User_ID.current.value;
+    const post_Title = PostTitleElement.current.value;
+    const postBody = PostBodyElement.current.value;
+
+    addPost(userID, post_Title, postBody);
+
+    PostBodyElement.current.value = "";
+    PostTitleElement.current.value = "";
+    User_ID.current.value = "";
+  };
+
   return (
     <>
       <div className={style.FormFlex}>
-        <form className={style.FormClass}>
+        <form
+          className={style.FormClass}
+          onSubmit={(event) => handleOnSubmit(event)}
+        >
+          <div className="mb-3">
+            <label
+              htmlFor="exampleInputEmail1"
+              className={`form-label ${style.CreatePostStyle}`}
+            >
+              User ID
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="UserID"
+              ref={User_ID}
+            />
+          </div>
           <div className="mb-3">
             <label
               htmlFor="exampleInputEmail1"
@@ -13,15 +50,16 @@ const CreatePost = () => {
               Post Heading
             </label>
             <input
-              type="email"
+              type="text"
               className="form-control"
-              id="exampleInputEmail1"
+              id="PostTitle"
               aria-describedby="emailHelp"
+              ref={PostTitleElement}
             />
           </div>
           <div className="mb-3">
             <label
-              htmlFor="exampleInputPassword1"
+              htmlFor="PostContent"
               className={`form-label ${style.CreatePostStyle}`}
             >
               Post Content
@@ -30,6 +68,7 @@ const CreatePost = () => {
               className="form-control"
               id="exampleInputPassword1"
               style={{ height: "10rem" }}
+              ref={PostBodyElement}
             />
           </div>
           <button type="submit" className="btn btn-primary">

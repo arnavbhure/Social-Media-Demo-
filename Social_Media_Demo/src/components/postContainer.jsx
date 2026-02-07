@@ -1,11 +1,13 @@
 import Post from "./Post";
 import style from "./PostContainerCss.module.css";
-import { DEFAULT_POST_LIST } from "../store/post-store";
+import { PostList } from "../store/post-store";
+import { useContext } from "react";
 
 const PostContainer = () => {
+  const { postList } = useContext(PostList);
   return (
     <div className={style.postContainerFlex}>
-      {DEFAULT_POST_LIST.map((post) => (
+      {postList.map((post) => (
         <Post key={post.id} post={post} />
       ))}
     </div>

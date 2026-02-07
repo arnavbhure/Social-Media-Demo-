@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 
-export const DEFAULT_POST_LIST = [
+const currPostList = [
   {
     id: "1",
     title: "Going to Mumbai",
@@ -36,7 +36,7 @@ export const PostList = createContext({
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(
     postListReducer,
-    DEFAULT_POST_LIST,
+    currPostList,
   );
   const addPost = (user_ID, postTitle, postBody) => {
     dispatchPostList({
@@ -71,7 +71,9 @@ const postListReducer = (currPostList, action) => {
   if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currPostList];
   } else if (action.type === "DELETE_POST") {
-    newPostList = currPostList.fiter((post) => post.id !== action.payload.id);
+    newPostList = currPostList.filter(
+      (post) => post.id !== action.payload.postID,
+    );
   }
   return newPostList;
 };

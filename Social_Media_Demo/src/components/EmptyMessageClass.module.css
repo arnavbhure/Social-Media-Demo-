@@ -1,0 +1,14 @@
+.EmptyMessageClass {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 13%;
+  align-items: center;
+}
+
+.MessageFlex {
+  width: 100rem;
+  display: flex;
+  margin-top: 3rem;
+  margin-left: 1rem;
+}
