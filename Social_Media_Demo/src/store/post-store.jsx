@@ -1,36 +1,12 @@
 import { createContext, useReducer } from "react";
 
-const currPostList = [
-  {
-    id: "1",
-    title: "Going to Mumbai",
-    body: "Hi Friends, I am going to Mumbai for my vacations. Hope to enjoy a lot. Peace out.",
-    user_ID: "user-9",
-  },
-  {
-    id: "2",
-    title: "Paas ho gye bhai",
-    body: "4 saal ki masti k baad bhi ho gaye hain paas. Hard to believe.",
-    user_ID: "user-2",
-  },
-  {
-    id: "3",
-    title: "Going to Mumbai",
-    body: "Hi Friends, I am going to Mumbai for my vacations. Hope to enjoy a lot. Peace out.",
-    user_ID: "user-9",
-  },
-  {
-    id: "4",
-    title: "Paas ho gye bhai",
-    body: "4 saal ki masti k baad bhi ho gaye hain paas. Hard to believe.",
-    user_ID: "user-2",
-  },
-];
+const currPostList = [];
 
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
   deletePost: () => {},
+  addPosts: () => {},
 });
 
 const PostListProvider = ({ children }) => {
@@ -38,7 +14,7 @@ const PostListProvider = ({ children }) => {
     postListReducer,
     currPostList,
   );
-  const addPost = (user_ID, postTitle, postBody) => {
+  const addPost = (user_ID, postTitle, postBody, tags, reactions) => {
     dispatchPostList({
       type: "ADD_POST",
       payload: {
@@ -46,6 +22,17 @@ const PostListProvider = ({ children }) => {
         title: postTitle,
         body: postBody,
         user_ID,
+        tags,
+        reactions,
+      },
+    });
+  };
+
+  const addPosts = (posts) => {
+    dispatchPostList({
+      type: "ADD_INITIAL_POSTS",
+      payload: {
+        posts,
       },
     });
   };
@@ -60,7 +47,7 @@ const PostListProvider = ({ children }) => {
   };
 
   return (
-    <PostList.Provider value={{ postList, addPost, deletePost }}>
+    <PostList.Provider value={{ postList, addPost, deletePost, addPosts }}>
       {children}
     </PostList.Provider>
   );
@@ -74,6 +61,8 @@ const postListReducer = (currPostList, action) => {
     newPostList = currPostList.filter(
       (post) => post.id !== action.payload.postID,
     );
+  } else if (action.type === "ADD_INITIAL_POSTS") {
+    return action.payload.posts;
   }
   return newPostList;
 };

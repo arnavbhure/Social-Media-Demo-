@@ -9,22 +9,36 @@
 }
 
 .post {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0.3rem;
   margin: 1rem;
   border-radius: 2rem;
   box-shadow: 5px 5px 8px 5px #d4d5d4;
   border: none;
+  padding: 0.3rem;
+  width: 30%;
 }
 
 .CardBody {
-  min-width: 6rem;
-  min-height: 15rem;
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
+  min-width: 6rem;
+  min-height: 15rem;
+}
+.Tags {
+  display: flex;
+  gap: 1rem;
+  margin: 0.1rem;
+}
+
+.Tag {
+  font-size: 0.82rem;
+}
+.Reactions {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  width: 95%;
+  height: 2.5rem;
 }

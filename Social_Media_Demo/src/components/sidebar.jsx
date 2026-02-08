@@ -6,7 +6,7 @@ const Sidebar = ({ setActiveSection }) => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
-      style={{ width: "280px", height: "112.45vh" }}
+      style={{ width: "15%", height: "112.45vh", minWidth: "85px" }}
     >
       <a
         href="/"

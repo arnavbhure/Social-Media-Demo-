@@ -6,6 +6,8 @@ const CreatePost = () => {
   const PostTitleElement = useRef();
   const PostBodyElement = useRef();
   const User_ID = useRef();
+  const reactions = useRef();
+  const tags = useRef();
   const { addPost } = useContext(PostList);
 
   const handleOnSubmit = (event) => {
@@ -13,12 +15,15 @@ const CreatePost = () => {
     const userID = User_ID.current.value;
     const post_Title = PostTitleElement.current.value;
     const postBody = PostBodyElement.current.value;
-
-    addPost(userID, post_Title, postBody);
+    const Tags = tags.current.value.split(" ");
+    const Reactions = reactions.current.value;
+    addPost(userID, post_Title, postBody, Tags, Reactions);
 
     PostBodyElement.current.value = "";
     PostTitleElement.current.value = "";
     User_ID.current.value = "";
+    reactions.current.value = "";
+    tags.current.value = "";
   };
 
   return (
@@ -67,9 +72,32 @@ const CreatePost = () => {
             <textarea
               className="form-control"
               id="exampleInputPassword1"
-              style={{ height: "10rem" }}
+              style={{ height: "6rem" }}
               ref={PostBodyElement}
             />
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="exampleInputEmail1"
+              className={`form-label ${style.CreatePostStyle}`}
+            >
+              Number of Reactions
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="reactions"
+              ref={reactions}
+            />
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="exampleInputEmail1"
+              className={`form-label ${style.CreatePostStyle}`}
+            >
+              Tags (separate with space)
+            </label>
+            <input type="text" className="form-control" id="tags" ref={tags} />
           </div>
           <button type="submit" className="btn btn-primary">
             Submit
