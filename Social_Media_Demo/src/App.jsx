@@ -7,6 +7,7 @@ import { useState } from "react";
 import CreatePost from "./components/createPost";
 import PostListProvider from "./store/post-store";
 import { EmptyMessage } from "./components/EmptyMessage";
+import Spinner from "./components/Spinner";
 
 function App() {
   const [activeSection, setActiveSection] = useState("home"); // for usetate for which section is active  , default : home

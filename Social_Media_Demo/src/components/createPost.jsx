@@ -17,13 +17,22 @@ const CreatePost = () => {
     const postBody = PostBodyElement.current.value;
     const Tags = tags.current.value.split(" ");
     const Reactions = reactions.current.value;
-    addPost(userID, post_Title, postBody, Tags, Reactions);
 
-    PostBodyElement.current.value = "";
-    PostTitleElement.current.value = "";
-    User_ID.current.value = "";
-    reactions.current.value = "";
-    tags.current.value = "";
+    if (
+      userID !== "" &&
+      post_Title !== "" &&
+      postBody !== "" &&
+      Tags !== "" &&
+      Reactions !== ""
+    ) {
+      addPost(userID, post_Title, postBody, Tags, Reactions);
+
+      PostBodyElement.current.value = "";
+      PostTitleElement.current.value = "";
+      User_ID.current.value = "";
+      reactions.current.value = "";
+      tags.current.value = "";
+    }
   };
 
   return (

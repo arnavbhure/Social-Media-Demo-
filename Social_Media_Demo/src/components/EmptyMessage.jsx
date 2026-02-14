@@ -1,17 +1,28 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PostList } from "../store/post-store";
 import style from "./EmptyMessageClass.module.css";
+import Spinner from "./Spinner";
 
 export const EmptyMessage = ({ activeSection }) => {
   const { postList, addPosts } = useContext(PostList);
+  const [loading, setLoading] = useState(false);
 
-  const handleOnClick = () => {
-    fetch("https://dummyjson.com/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        addPosts(data.posts);
-      });
+  const handleOnClick = async () => {
+    try {
+      setLoading(true);
+
+      const res = await fetch("https://dummyjson.com/posts");
+      const data = await res.json();
+
+      addPosts(data.posts);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   if (activeSection === "home" && postList.length === 0) {
     return (
@@ -22,7 +33,7 @@ export const EmptyMessage = ({ activeSection }) => {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={() => handleOnClick()}
+            onClick={handleOnClick}
           >
             Fetch Post
           </button>
@@ -30,5 +41,6 @@ export const EmptyMessage = ({ activeSection }) => {
       </div>
     );
   }
+
   return null;
 };
